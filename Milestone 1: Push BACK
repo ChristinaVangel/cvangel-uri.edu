@@ -1,0 +1,36 @@
+public Rational(int numerator, int denomerator){
+       this.numerator = numerator;
+       this.denomerator = denomerator;
+}
+class RationalTest {
+    void testEquals() {
+        Rational rational12 = new Rational(1, 2);
+         if(assertTrue(rational12.equals(new Rational(1, 2)))){
+                  return true;
+         }
+         else{
+                  return false;
+         }
+    }
+    void testNotEquals() {
+        Rational rational12 = new Rational(1, 2);
+        Rational rational23 = new Rational(2, 3);
+        if(assertFalse(rational12.equals(rational23))){
+              return false;
+         }
+         else{
+               return true;
+          }
+    }
+    void testDoubleValue() {
+        Rational rational23 = new Rational(2, 3);
+        assertEquals(0.6666667, rational23.doubleValue(), 0.000001);
+    }
+    void cantCompareNull() {
+        Rational rational12 = new Rational(1, 2);
+        assertThrows(NullPointerException.class, () -> rational12.equals(null));
+    }
+    void zeroDenominatorIsIllegal() {
+        assertThrows(IllegalArgumentException.class, () -> new Rational(1, 0));
+    }
+}
